@@ -136,7 +136,7 @@ class TissueLocator():
                 if self._mask[int(math.floor(point[0] / mask_scale)), int(math.floor(point[1] / mask_scale))] == 1:
                     new_list_points.append(point)
             list_points = np.array(new_list_points)
-                print("Note: mask mode is yet to be fully tested.")
+            print("Note: mask mode is yet to be fully tested.")
 
         return list_points
 
