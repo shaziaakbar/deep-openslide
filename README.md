@@ -69,9 +69,5 @@ einst.extract_patches_and_save(out_location = save_location, workers=1, list_poi
 * [MAX_SAMPLE_PER_BATCH_FILE]: determines the maximum number of patches to be stored in a single .npz file. By default this is 500.
 
 --------------------------------------------------------------------------- 
-### Provide sedeen annotations: 
- To extract locations based on annotations provided through sedeen, you can provide the path to those annotations in region_locations. However this implementation has been adapted to extract specific properties from the xml annotations. Therefore edit the else clause in get_coordinates_as_list() to extract annotations depending on your setup.
-
---------------------------------------------------------------------------- 
 ### Save in alternative formats: 
  If you don't wish to save the patches as .h5 files there is an option to  change this to numpy files. If you would like to implement your own method (e.g. to create images) overwride the save() function in TileWorker class.
