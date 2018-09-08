@@ -32,8 +32,6 @@ def _get_tissue_mask(filename, mask_level=2):
     thresholded_mask = downscale_image[:, :, 0] > val
 
     tissue_mask = thresholded_mask.astype('bool')
-    # unclear why the following needs to be performed...?
-    tissue_mask = np.flipud(np.rot90(tissue_mask))
     return tissue_mask
 
 

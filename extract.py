@@ -11,6 +11,7 @@ except:
 from openslide import open_slide
 import numpy as np
 import h5py
+import math
 import scipy.misc
 
 MAX_SAMPLE_PER_BATCH_FILE = 500
@@ -114,6 +115,7 @@ class TissueLocator():
         self._level = level  # 0 is the highest resolution and increments to lowest resolution
 
         self.mode = mode
+        self._mask = mask
         self.region_locations = region_locations
         self.random_extract = num_tiles_per_slide
         self.use_tissue_finder = use_tissue_finder
@@ -127,8 +129,14 @@ class TissueLocator():
             if self.mode == "random":
                 np.random.shuffle(list_points)
 
-        if self.mode == "mask":
-            print("This mode has not been implemented yet.")
+        if self.mode == "mask" and self._mask is not None:
+            mask_scale = dims[1] / float(self._mask.shape[0])
+            new_list_points = []
+            for point in list_points:
+                if self._mask[int(math.floor(point[0] / mask_scale)), int(math.floor(point[1] / mask_scale))] == 1:
+                    new_list_points.append(point)
+            list_points = np.array(new_list_points)
+                print("Note: mask mode is yet to be fully tested.")
 
         return list_points
 
