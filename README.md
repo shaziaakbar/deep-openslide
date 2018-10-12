@@ -1,5 +1,4 @@
-Author: Shazia Akbar
-Date last updated: 10th April 2017
+# deep-openslide
 
 --------------------------------------------------------------------------- 
 Prerequisites:
